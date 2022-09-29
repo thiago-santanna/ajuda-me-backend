@@ -9,7 +9,7 @@ export interface IUser {
   password?: string;
 }
 
-export default class User {
+export class User {
   id?: string;
 
   constructor(
@@ -23,5 +23,21 @@ export default class User {
     if (!this.id) {
       this.id = uuidV4();
     }
+  }
+
+  getNome(): string {
+    return this.nome;
+  }
+  getEmail(): string {
+    return this.email;
+  }
+  getWhatsApp(): string {
+    return this.whatsApp;
+  }
+  getCidade(): string {
+    return this.cidade;
+  }
+  getEstado(): string {
+    return this.estado;
   }
 }
