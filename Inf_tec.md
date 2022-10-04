@@ -25,7 +25,7 @@
 * Estado
 * Senha
 
-- [ ] Usuario deve poder fazer login
+- [ x ] Usuario deve poder fazer login
 - [ ] Usuario deve poder alterar senha
 
 - [ ] Deve ser possível o cadastro de caso/evento
