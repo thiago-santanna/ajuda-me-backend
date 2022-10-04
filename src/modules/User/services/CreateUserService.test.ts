@@ -27,6 +27,7 @@ describe("ao manipular o cadastro de usuario", () => {
       if (userResturned.estado === undefined) return false;
       if (userResturned.cidade === undefined) return false;
       if (userResturned.email === undefined) return false;
+      if (userResturned.password === undefined) return false;
       return true;
     };
 

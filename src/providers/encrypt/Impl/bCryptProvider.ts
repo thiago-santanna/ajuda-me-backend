@@ -6,7 +6,6 @@ export class BcryptProvider implements IEncrypterProvider {
 
   async hash(plaintextPassword: string): Promise<string> {
     const hash = hashSync(plaintextPassword, this.saltRounds);
-    console.log(hash);
     return hash;
   }
 
@@ -14,7 +13,10 @@ export class BcryptProvider implements IEncrypterProvider {
     passwordHash,
     plaintextPassword,
   }: ICompare): Promise<boolean> {
+    console.log(plaintextPassword);
+    console.log(passwordHash);
     const match = compareSync(plaintextPassword, passwordHash);
+    console.log(match);
     return match;
   }
 }

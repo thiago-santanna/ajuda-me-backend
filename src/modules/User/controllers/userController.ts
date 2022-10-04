@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Router, Request, Response } from "express";
 import UserMemoryRepositpory from "../repository/Impl/UserMemoryRepositpory";
 import { IUserRequest } from "../repository/IUserRepository";
@@ -21,6 +22,11 @@ userController.post("/", async (req: Request, res: Response) => {
     estado,
     password,
   });
+
+  console.log(userResponse);
+
+  // @ts-ignore: Unreachable code error
+  delete userResponse.password;
 
   console.log(userResponse);
 

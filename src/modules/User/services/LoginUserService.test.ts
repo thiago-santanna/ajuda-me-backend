@@ -1,25 +1,35 @@
-// import { describe, it, expect } from "vitest";
-// import { User } from "../model/User";
+import { describe, it, expect } from "vitest";
+import { BcryptProvider } from "../../../providers/encrypt/Impl/bCryptProvider";
+import UserMemoryRepositpory from "../repository/Impl/UserMemoryRepositpory";
+import { IUserRequest } from "../repository/IUserRepository";
+import { LoginUserService } from "../services/LoginUserService";
+import { CreateUserService } from "./CreateUserService";
 
-// describe("Ao fazer o login do usuario", () => {
-//   it("quando corresponder as senhas deve ser verdadeiro", () => {
-//     const passwordHas = "$2b$10$3IoyMYCyxz6ExhJ/jtGYyun.qykuNrZcttIxlKOvHqoTPNBNII8/e"
-//     const usuario: User = new User(
-//       "John",
-//       "john@gmail.com",
-//       "81999999999",
-//       "recife",
-//       "PE",
-//       "1020",
-//       1
-//     );
+describe("Ao fazer o login do usuario", () => {
+  it("quando corresponder as senhas deve ser verdadeiro", async () => {
+    const userRepository = new UserMemoryRepositpory();
+    const encrypter = new BcryptProvider();
+    const createUserService = new CreateUserService(userRepository, encrypter);
+    const loginUserService = new LoginUserService(userRepository, encrypter);
 
-//     const macth = true;
+    const usuario: IUserRequest = {
+      nome: "John",
+      email: "john@gmail.com",
+      whatsApp: "81999999999",
+      cidade: "recife",
+      estado: "PE",
+      password: "102030",
+    };
+    const userResturned = await createUserService.execute(usuario);
 
-//     expect(macth).toBe(true);
-//   });
+    const email = userResturned.email;
+    const password = "102030";
 
-//   it("quando as senhas não corresponder deve ser falso", () => {
+    const macth = await loginUserService.execute({ email, password });
+    expect(macth).toBe(true);
+  });
 
-//   });
-// )};
+  // it("quando as senhas não corresponder deve ser falso", () => {
+
+  // });
+});

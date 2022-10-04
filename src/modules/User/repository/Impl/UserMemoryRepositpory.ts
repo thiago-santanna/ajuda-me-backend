@@ -11,6 +11,7 @@ export default class UserMemoryRepositpory implements IUserRepository {
   constructor() {
     this.users = new Array<User>();
   }
+
   async create(userRequest: IUserRequest): Promise<IUserResponse> {
     const user = new User(
       userRequest.nome,
@@ -35,11 +36,27 @@ export default class UserMemoryRepositpory implements IUserRepository {
       cidade: userCadastrador[0].getCidade(),
       estado: userCadastrador[0].getEstado(),
       whatsApp: userCadastrador[0].getWhatsApp(),
+      password: userCadastrador[0].getPassword(),
     };
     return userResult;
   }
-  async findOne(id: string): Promise<IUserResponse> {
+
+  async findByid(id: string): Promise<IUserResponse> {
     throw new Error("Method not implemented.");
+  }
+
+  async findByEmail(email: string): Promise<IUserResponse> {
+    const user = this.users.filter((user) => user.getEmail() === email);
+    const resultuser: IUserResponse = {
+      id: user[0].getId(),
+      cidade: user[0].getCidade(),
+      email: user[0].getEmail(),
+      estado: user[0].getEstado(),
+      nome: user[0].getNome(),
+      password: user[0].getPassword(),
+      whatsApp: user[0].getWhatsApp(),
+    };
+    return resultuser;
   }
   async findAll(): Promise<IUserResponse[]> {
     throw new Error("Method not implemented.");

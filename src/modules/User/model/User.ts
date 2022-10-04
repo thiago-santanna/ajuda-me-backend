@@ -25,7 +25,12 @@ export class User {
       this.id = uuidV4();
     }
   }
-
+  getId(): string {
+    if (this.id) {
+      return this.id;
+    }
+    return "";
+  }
   getStatus(): number {
     return this.status;
   }
@@ -45,6 +50,9 @@ export class User {
     return this.estado;
   }
   getPasswrod(): string {
+    return this.password;
+  }
+  getPassword(): string {
     return this.password;
   }
 }
