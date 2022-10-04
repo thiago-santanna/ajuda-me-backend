@@ -18,7 +18,8 @@ export default class UserMemoryRepositpory implements IUserRepository {
       userRequest.whatsApp,
       userRequest.cidade,
       userRequest.estado,
-      userRequest.password
+      userRequest.password,
+      1
     );
 
     this.users.push(user);
@@ -28,8 +29,12 @@ export default class UserMemoryRepositpory implements IUserRepository {
     );
 
     const userResult: IUserResponse = {
-      id: !userCadastrador[0].id ? "" : userCadastrador[0].id,
+      id: userCadastrador[0].id === undefined ? "" : userCadastrador[0].id,
       nome: userCadastrador[0].getNome(),
+      email: userCadastrador[0].getEmail(),
+      cidade: userCadastrador[0].getCidade(),
+      estado: userCadastrador[0].getEstado(),
+      whatsApp: userCadastrador[0].getWhatsApp(),
     };
     return userResult;
   }

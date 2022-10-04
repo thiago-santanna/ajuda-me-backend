@@ -18,13 +18,17 @@ export class User {
     private whatsApp: string,
     private cidade: string,
     private estado: string,
-    private password: string
+    private password: string,
+    private status: number
   ) {
     if (!this.id) {
       this.id = uuidV4();
     }
   }
 
+  getStatus(): number {
+    return this.status;
+  }
   getNome(): string {
     return this.nome;
   }

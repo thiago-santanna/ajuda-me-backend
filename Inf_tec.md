@@ -14,9 +14,9 @@
 
 ### Requesitos levantados
 
-- [ ] Organização ou Pessoa deve poder se cadastrar
+- [ x ] Organização ou Pessoa deve poder se cadastrar
 
-- [ ] Todos os dados devem ser informados
+- [ x ] Todos os dados devem ser informados
 
 * Título da entidade ONGs ou Pessoa
 * E-mail
@@ -25,7 +25,8 @@
 * Estado
 * Senha
 
-- [ ] Ao concluir o cadastro deve enviar por e-mail um ID unico gerado internamente para login.
+- [ ] Usuario deve poder fazer login
+- [ ] Usuario deve poder alterar senha
 
 - [ ] Deve ser possível o cadastro de caso/evento
 

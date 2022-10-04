@@ -2,15 +2,17 @@ import { Router, Request, Response } from "express";
 import UserMemoryRepositpory from "../repository/Impl/UserMemoryRepositpory";
 import { IUserRequest } from "../repository/IUserRepository";
 import { CreateUserService } from "../services/CreateUserService";
+import { BcryptProvider } from "../../../providers/encrypt/Impl/bCryptProvider";
 
 const userController = Router();
 const userRepository = new UserMemoryRepositpory();
+const encrypter = new BcryptProvider();
 
 userController.post("/", async (req: Request, res: Response) => {
   const { nome, email, whatsApp, cidade, estado, password }: IUserRequest =
     req.body;
 
-  const createUserService = new CreateUserService(userRepository);
+  const createUserService = new CreateUserService(userRepository, encrypter);
   const userResponse = await createUserService.execute({
     nome,
     email,

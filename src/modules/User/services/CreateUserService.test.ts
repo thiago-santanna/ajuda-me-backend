@@ -1,23 +1,32 @@
 import { describe, expect, it } from "vitest";
-import { User } from "../model/User";
+import { BcryptProvider } from "../../../providers/encrypt/Impl/bCryptProvider";
+import UserMemoryRepositpory from "../repository/Impl/UserMemoryRepositpory";
+import { CreateUserService } from "./CreateUserService";
+import { IUserRequest } from "../repository/IUserRepository";
 
 describe("ao manipular o cadastro de usuario", () => {
-  it("o usuario deve ter todos os campos informados no cadastro", () => {
-    const usuario: User = new User(
-      "John",
-      "john@gmail.com",
-      "81999999999",
-      "recife",
-      "PE",
-      "1020"
-    );
+  it("o usuario deve ter todos os campos informados no cadastro", async () => {
+    const usuario: IUserRequest = {
+      nome: "John",
+      email: "john@gmail.com",
+      whatsApp: "81999999999",
+      cidade: "recife",
+      estado: "PE",
+      password: "1020",
+    };
+
+    const userRepository = new UserMemoryRepositpory();
+    const encrypter = new BcryptProvider();
+    const createUserService = new CreateUserService(userRepository, encrypter);
+
+    const userResturned = await createUserService.execute(usuario);
 
     const existemTodosCampos = () => {
-      if (usuario.getNome() === undefined) return false;
-      if (usuario.getWhatsApp() === undefined) return false;
-      if (usuario.getEstado() === undefined) return false;
-      if (usuario.getCidade() === undefined) return false;
-      if (usuario.getEmail() === undefined) return false;
+      if (userResturned.nome === undefined) return false;
+      if (userResturned.whatsApp === undefined) return false;
+      if (userResturned.estado === undefined) return false;
+      if (userResturned.cidade === undefined) return false;
+      if (userResturned.email === undefined) return false;
       return true;
     };
 

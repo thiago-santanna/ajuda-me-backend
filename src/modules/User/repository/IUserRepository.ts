@@ -4,12 +4,16 @@ export interface IUserRequest {
   whatsApp: string;
   cidade: string;
   estado: string;
-  password?: string;
+  password: string;
 }
 
 export interface IUserResponse {
   id: string;
   nome: string;
+  email: string;
+  whatsApp: string;
+  cidade: string;
+  estado: string;
 }
 
 export interface IUserRepository {
