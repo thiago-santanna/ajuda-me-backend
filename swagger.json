@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AjudaMe-API Documentation",
+    "description": "AjudaMe-API documentation for the API client",
+    "version": "1.0.0",
+    "contact": {
+      "email": "tss.webapps@gmail.com"
+    }
+  }
+}
