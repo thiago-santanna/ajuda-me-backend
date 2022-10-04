@@ -23,7 +23,7 @@
 * WhatsApp
 * Cidade
 * Estado
-* Senha ( apenas para usuários que querem criar casos/eventos.)
+* Senha
 
 - [ ] Ao concluir o cadastro deve enviar por e-mail um ID unico gerado internamente para login.
 

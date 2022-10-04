@@ -6,7 +6,7 @@ export interface IUser {
   whatsApp: string;
   cidade: string;
   estado: string;
-  password?: string;
+  password: string;
 }
 
 export class User {
@@ -18,7 +18,7 @@ export class User {
     private whatsApp: string,
     private cidade: string,
     private estado: string,
-    private password?: string
+    private password: string
   ) {
     if (!this.id) {
       this.id = uuidV4();
@@ -39,5 +39,8 @@ export class User {
   }
   getEstado(): string {
     return this.estado;
+  }
+  getPasswrod(): string {
+    return this.password;
   }
 }
